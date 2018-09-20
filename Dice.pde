@@ -5,39 +5,62 @@
 	15 40 65 90
 */
 
-Die first = new Die(width/2, height/2);
+Die first = new Die(19, height/2);
+Die second = new Die(115.2, height/2);
+Die third = new Die(211.4, height/2);
+Die fourth = new Die(307.6, height/2);
+Die fifth = new Die(403.8, height/2);
 
 void setup()
 {
-	noLoop();
-	size(500, 600);
+  noLoop();
+  size(500, 600);
+  System.out.println(height/2);
 }
 void draw()
 {
-	first.show();
+  first.show();
+  second.show();
+  third.show();
+  fourth.show();
+  fifth.show();
 }
 void mousePressed()
 {
-	redraw();
+  redraw();
 }
 class Die //models one single dice cube
 {
-	//variable declarations here
-	int myValue, myX, myY;
+  //variable declarations here
+  int myValue, myY;
+  float  myX;
 
-	Die(int x, int y) //constructor
-	{
-		myValue = 1;
-		myX = x;
-		myY = y;
-	}
-	void roll()
-	{
-		//your code here
-	}
-	void show()
-	{
-		fill(255, 255, 255);
-		rect(myX, myY, 25, 25, 5);
-	}
+  Die(float x, int y) //constructor
+  {
+    myX = x;
+    myY = y;
+    roll();
+  }
+  void roll()
+  {
+    myValue = (int)(Math.random()*6)+1;
+    System.out.println(myValue);
+    if (myValue == 1){
+    } else if (myValue == 2){
+
+    } else if (myValue == 3){
+    	
+    } else if (myValue == 4){
+    	
+    } else if (myValue == 5){
+    	
+    } else if (myValue == 6){
+    	
+    }
+  }
+  void show()
+  {
+    fill(255, 255, 255);
+    rect(myX, myY, 77.2, 77.2, 5);
+  }
 }
