@@ -4,14 +4,14 @@
   maximum is 90
   15 40 65 90
   
-  base dot size should be 20, 20
+  base dot size should be 16.5, 16.5
 */
 
-Die first = new Die(19, 19);
-Die second = new Die(115.2, height/2);
-Die third = new Die(211.4, height/2);
-Die fourth = new Die(307.6, height/2);
-Die fifth = new Die(403.8, height/2);
+//Die first = new Die(19, 19);
+//Die second = new Die(115.2, height/2);
+//Die third = new Die(211.4, height/2);
+//Die fourth = new Die(307.6, height/2);
+//Die fifth = new Die(403.8, height/2);
 
 void setup()
 {
@@ -20,7 +20,10 @@ void setup()
 }
 void draw()
 {
-  first.show();
+  for (float x = 19; x < 500; x = x + 96.2) {
+    Die first = new Die(x, 19);
+    first.show(x);
+  }
   /*
   second.show();
   third.show();
@@ -30,7 +33,6 @@ void draw()
 void mousePressed()
 {
   redraw();
-  first.roll();
 }
 class Die //models one single dice cube
 {
@@ -46,62 +48,80 @@ class Die //models one single dice cube
   }
   void roll()
   {
-    myValue = 6;
-    //myValue = (int)(Math.random()*6)+1;
+    //myValue = 5;
+    myValue = (int)(Math.random()*6)+1;
     System.out.println(myValue);
   }
-  void show()
+  void show(float x)
   {
-    fill(255, 255, 255);
-    rect(myX, myY, 77.2, 77.2, 5);
+    baseDie();
     if (myValue == 1){
-      one();
+      one(x);
     } else if (myValue == 2){
-      two();
+      two(x);
     } else if (myValue == 3){
-      three();
+      three(x);
     } else if (myValue == 4){
-      four();
+      four(x);
     } else if (myValue == 5){
-      five();
+      five(x);
     } else if (myValue == 6){
-      six();
+      six(x);
     }
   }
-  void one(){
+  void one(float x){
+    baseDie();
     noStroke();
     fill(255, 0, 0);
-    ellipse(57.6, 57.6, 30, 30);
+    ellipse(x+38.6, 57.6, 30, 30);
   }
-  void two(){
+  void two(float x){
+    baseDie();
     noStroke();
     fill(0);
-    ellipse(38.3, 38.3, 20, 20);
+    ellipse(x+57.9, 38.3, 16.5, 16.5);
+    ellipse(x+19.3, 76.9, 16.5, 16.5);
   }
-  void three(){
+  void three(float x){
+    baseDie();
     noStroke();
     fill(0);
+    ellipse(x+57.9, 38.3, 16.5, 16.5);
+    ellipse(x+38.6, 57.6, 16.5, 16.5);
+    ellipse(x+19.3, 76.9, 16.5, 16.5);
   }
-  void four(){
+  void four(float x){
+    baseDie();
     noStroke();
     fill(0);
-    ellipse(38.3, 38.3, 20, 20);
-    ellipse(76.9, 38.3, 20, 20);
-    ellipse(38.3, 76.9, 20, 20);
-    ellipse(76.9, 76.9, 20, 20);
+    ellipse(x+19.3, 38.3, 16.5, 16.5);
+    ellipse(x+57.9, 38.3, 16.5, 16.5);
+    ellipse(x+19.3, 76.9, 16.5, 16.5);
+    ellipse(x+57.9, 76.9, 16.5, 16.5);
   }
-  void five(){
+  void five(float x){
+    baseDie();
     noStroke();
     fill(0);
-    ellipse(57.6, 57.6, 20, 20);
+    ellipse(x+19.3, 38.3, 16.5, 16.5);
+    ellipse(x+57.9, 38.3, 16.5, 16.5);
+    ellipse(x+38.6, 57.6, 16.5, 16.5);
+    ellipse(x+19.3, 76.9, 16.5, 16.5);
+    ellipse(x+57.9, 76.9, 16.5, 16.5);
   }
-  void six(){
+  void six(float x){
+    baseDie();
     noStroke();fill(0);
-    ellipse(38.3, 38.3, 15, 15);
-    ellipse(76.9, 38.3, 15, 15);
-    ellipse(38.3, 57.6, 15, 15);
-    ellipse(76.9, 57.6, 15, 15);
-    ellipse(38.3, 76.9, 15, 15);
-    ellipse(76.9, 76.9, 15, 15);
+    ellipse(x+19.3, 38.3, 16.5, 16.5);
+    ellipse(x+57.9, 38.3, 16.5, 16.5);
+    ellipse(x+19.3, 57.6, 16.5, 16.5);
+    ellipse(x+57.9, 57.6, 16.5, 16.5);
+    ellipse(x+19.3, 76.9, 16.5, 16.5);
+    ellipse(x+57.9, 76.9, 16.5, 16.5);
+  }
+  void baseDie(){
+    fill(255, 255, 255);
+    stroke(0);
+    rect(myX, myY, 77.2, 77.2, 5);
   }
 }
