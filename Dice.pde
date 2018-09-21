@@ -3,9 +3,11 @@
   minimun you get is 15
   maximum is 90
   15 40 65 90
+  
+  base dot size should be 20, 20
 */
 
-Die first = new Die(19, height/2);
+Die first = new Die(19, 19);
 Die second = new Die(115.2, height/2);
 Die third = new Die(211.4, height/2);
 Die fourth = new Die(307.6, height/2);
@@ -15,7 +17,6 @@ void setup()
 {
   noLoop();
   size(500, 600);
-  System.out.println(height/2);
 }
 void draw()
 {
@@ -45,22 +46,9 @@ class Die //models one single dice cube
   }
   void roll()
   {
-    myValue = 1;
+    myValue = 6;
     //myValue = (int)(Math.random()*6)+1;
     System.out.println(myValue);
-    /*if (myValue == 1){
-      one();
-    } else if (myValue == 2){
-
-    } else if (myValue == 3){
-      
-    } else if (myValue == 4){
-      
-    } else if (myValue == 5){
-      
-    } else if (myValue == 6){
-      
-    }*/
   }
   void show()
   {
@@ -69,30 +57,51 @@ class Die //models one single dice cube
     if (myValue == 1){
       one();
     } else if (myValue == 2){
-
+      two();
     } else if (myValue == 3){
-      
+      three();
     } else if (myValue == 4){
-      
+      four();
     } else if (myValue == 5){
-      
+      five();
     } else if (myValue == 6){
-      
+      six();
     }
   }
   void one(){
     noStroke();
     fill(255, 0, 0);
-    ellipse(57.6, 95, 20, 20);
+    ellipse(57.6, 57.6, 30, 30);
   }
   void two(){
+    noStroke();
+    fill(0);
+    ellipse(38.3, 38.3, 20, 20);
   }
   void three(){
+    noStroke();
+    fill(0);
   }
   void four(){
+    noStroke();
+    fill(0);
+    ellipse(38.3, 38.3, 20, 20);
+    ellipse(76.9, 38.3, 20, 20);
+    ellipse(38.3, 76.9, 20, 20);
+    ellipse(76.9, 76.9, 20, 20);
   }
   void five(){
+    noStroke();
+    fill(0);
+    ellipse(57.6, 57.6, 20, 20);
   }
   void six(){
+    noStroke();fill(0);
+    ellipse(38.3, 38.3, 15, 15);
+    ellipse(76.9, 38.3, 15, 15);
+    ellipse(38.3, 57.6, 15, 15);
+    ellipse(76.9, 57.6, 15, 15);
+    ellipse(38.3, 76.9, 15, 15);
+    ellipse(76.9, 76.9, 15, 15);
   }
 }
