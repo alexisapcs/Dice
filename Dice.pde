@@ -18,7 +18,7 @@ void setup() {
   size(500, 600);
   //String[] fontList = PFont.list();
   //printArray(fontList);
-  myFont = createFont("Skia-Regular", 20);
+  myFont = createFont("Impact", 20);
   //AmericanTypewriter-Condensed
   //BradleyHandITCTT-Bold
   //Courier
@@ -28,9 +28,9 @@ void setup() {
   //NanumPen
   //Skia-Regular_Light
   textFont(myFont);
-  textAlign(CENTER, CENTER);
-  text("suck a g", width/2, height*3/4);
-  System.out.println((float)20/100);
+  textAlign(LEFT, CENTER);
+  text("suck a g", 20, 400);
+  System.out.println((float)19+96.2*4);
 }
 
 void draw() {
@@ -44,6 +44,30 @@ void draw() {
 
 void mousePressed() {
   redraw();
+}
+
+void keyPressed() {
+  if (key == 0) {    
+    
+  } else if (key == 1) {  
+    
+  } else if (key == 2) {  
+    
+  } else if (key == 3) {  
+    
+  } else if (key == 4) {  
+    
+  } else if (key == 5) {  
+    
+  } else if (key == 6) {  
+    
+  } else if (key == 7) {  
+    
+  } else if (key == 8) {  
+    
+  } else if (key == 9) {  
+    
+  }
 }
 
 class Die {
