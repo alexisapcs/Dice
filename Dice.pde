@@ -73,7 +73,6 @@ void keyPressed() {
     bet += key;
   } else if (key == '\n') {
     text("Bet: " + bet, 300, 426);
-    System.out.println("the bet is:" + bet);
   }
 }
 
