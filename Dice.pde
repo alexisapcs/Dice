@@ -10,6 +10,7 @@
   
   base dot size should be 16.5, 16.5
 */
+
 int sum;
 String bet = "";
 String typing = "";
@@ -51,28 +52,29 @@ void mousePressed() {
 }
 
 void keyPressed() {
-  if (key == 0) {    
+  if (key == '0') {
+    bet = Character.toString(key);
+  } else if (key == '1') {  
+    bet = Character.toString(key);
+  } else if (key == '2') {  
     bet += key;
-  } else if (key == 1) {  
+  } else if (key == '3') {  
     bet += key;
-  } else if (key == 2) {  
+  } else if (key == '4') {  
     bet += key;
-  } else if (key == 3) {  
+  } else if (key == '5') {  
     bet += key;
-  } else if (key == 4) {  
+  } else if (key == '6') {  
     bet += key;
-  } else if (key == 5) {  
+  } else if (key == '7') {  
     bet += key;
-  } else if (key == 6) {  
+  } else if (key == '8') {  
     bet += key;
-  } else if (key == 7) {  
-    bet += key;
-  } else if (key == 8) {  
-    bet += key;
-  } else if (key == 9) {  
+  } else if (key == '9') {  
     bet += key;
   } else if (key == '\n') {
     text("Bet: " + bet, 300, 426);
+    System.out.println("the bet is: " + bet);
   }
 }
 
