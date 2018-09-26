@@ -43,7 +43,7 @@ void draw() {
   fill(0);
   text("Sum of Dice: " + sum, 20, 404);
   text("Balance: " , 300, 404);
-  text("Bet: ", 300, 426);
+  text("Bet: " + bet, 300, 426);
 }
 
 void mousePressed() {
@@ -57,23 +57,24 @@ void keyPressed() {
   } else if (key == '1') {  
     bet = Character.toString(key);
   } else if (key == '2') {  
-    bet += key;
+    bet = Character.toString(key);
   } else if (key == '3') {  
-    bet += key;
+    bet = Character.toString(key);
   } else if (key == '4') {  
-    bet += key;
+    bet = Character.toString(key);
   } else if (key == '5') {  
-    bet += key;
+    bet = Character.toString(key);
   } else if (key == '6') {  
-    bet += key;
+    bet = Character.toString(key);
   } else if (key == '7') {  
-    bet += key;
+    bet = Character.toString(key);
   } else if (key == '8') {  
-    bet += key;
+    bet = Character.toString(key);
   } else if (key == '9') {  
-    bet += key;
+    bet = Character.toString(key);
   } else if (key == '\n') {
-    text("Bet: " + bet, 300, 426);
+    redraw();
+    sum = 0;
   }
 }
 
