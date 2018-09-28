@@ -121,6 +121,7 @@ void keyPressed() {
     sum = 0;
   }
 }
+
 void betCheck() {
   if (sum >= 100) {
     iBalance += iBet * 10;
