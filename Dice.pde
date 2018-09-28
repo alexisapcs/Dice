@@ -4,21 +4,25 @@
   minimun you get is 20
   maximum is 120
   
-  If you get a sum of 120 then you get x10
-  If you get a sum of 75 to 119 then get x2
+  If you get a sum of 100 or higher then you get x10
+  If you get a sum of 75 to 99 then get x2
   If you get a sum of lower than 80 then you lose the bet
   
   base dot size should be 16.5, 16.5
 */
 
 int sum;
-String bet = "";
-String typing = "";
+String bet = "0";
+String typing = "0";
+String balance = "100";
+
+int iBalance;
+int iBet;
 PFont myFont;
 
 void setup() {
   noLoop();
-  size(500, 600);
+  size(500, 544);
   myFont = createFont("Impact", 20);
   //AmericanTypewriter-Condensed
   //BradleyHandITCTT-Bold
@@ -32,18 +36,47 @@ void setup() {
   textAlign(LEFT, CENTER);
 }
 
-void draw() {
-  background(200);
-  for (float y = 19; y < 325; y += 96.2) {
-    for (float x = 19; x < 500; x += 96.2) {
-      Die dark = new Die(x, y);
-      dark.show(x, y);
+void draw() {  
+  iBalance = Integer.parseInt(balance);
+  iBet = Integer.parseInt(bet);
+  if (iBet <= iBalance){
+    background(200);
+    for (float y = 19; y < 325; y += 96.2) {
+      for (float x = 19; x < 500; x += 96.2) {
+        Die dark = new Die(x, y);
+        dark.show(x, y);
+      }
     }
-  }
-  fill(0);
-  text("Sum of Dice: " + sum, 20, 404);
-  text("Balance: " , 300, 404);
-  text("Bet: " + bet, 300, 426);
+    fill(0);
+    betCheck();
+    text("Sum of Dice: " + sum, 20, 404);
+    text("Balance: " + iBalance, 300, 404);
+    text("Bet: " + iBet, 300, 426);
+    if (sum >= 100) {
+      textAlign(CENTER, CENTER);
+      text("You mulipled your bet by 10", width/2, 475);
+      textAlign(LEFT, CENTER);
+    } else if (sum >= 75) {
+      textAlign(CENTER, CENTER);
+      text("You doubled your bet", width/2, 475);
+      textAlign(LEFT, CENTER);
+    } else if (sum < 75){
+      textAlign(CENTER, CENTER);
+      text("You lost your bet", width/2, 475);
+      textAlign(LEFT, CENTER);
+    }
+    
+    } else if (iBalance != 0) {
+      textAlign(CENTER, CENTER);
+      text("Your bet is too high", width/2, 475);
+      textAlign(LEFT, CENTER);
+    } else {
+      textAlign(CENTER, CENTER);
+      text("You lost all your money.", width/2, 475);
+      text("Refresh to get more or roll without gambling.", width/2, 500);
+      textAlign(LEFT, CENTER);
+    }
+  bet = "0";
 }
 
 void mousePressed() {
@@ -53,28 +86,51 @@ void mousePressed() {
 
 void keyPressed() {
   if (key == '0') {
-    bet = Character.toString(key);
+    typing = Character.toString(key);
+    bet += Character.toString(key);
   } else if (key == '1') {  
-    bet = Character.toString(key);
+    typing = Character.toString(key);
+    bet += Character.toString(key);
   } else if (key == '2') {  
-    bet = Character.toString(key);
+    typing = Character.toString(key);
+    bet += Character.toString(key);
   } else if (key == '3') {  
-    bet = Character.toString(key);
+    typing = Character.toString(key);
+    bet += Character.toString(key);
   } else if (key == '4') {  
-    bet = Character.toString(key);
+    typing = Character.toString(key);
+    bet += Character.toString(key);
   } else if (key == '5') {  
-    bet = Character.toString(key);
+    typing = Character.toString(key);
+    bet += Character.toString(key);
   } else if (key == '6') {  
-    bet = Character.toString(key);
+    typing = Character.toString(key);
+    bet += Character.toString(key);
   } else if (key == '7') {  
-    bet = Character.toString(key);
+    typing = Character.toString(key);
+    bet += Character.toString(key);
   } else if (key == '8') {  
-    bet = Character.toString(key);
+    typing = Character.toString(key);
+    bet += Character.toString(key);
   } else if (key == '9') {  
-    bet = Character.toString(key);
+    typing = Character.toString(key);
+    bet += Character.toString(key);
   } else if (key == '\n') {
+    iBet = Integer.parseInt(bet);
     redraw();
     sum = 0;
+  }
+}
+void betCheck() {
+  if (sum >= 100) {
+    iBalance += iBet * 10;
+    balance = Integer.toString(iBalance);
+  } else if (sum >= 75) {
+    iBalance += iBet * 2;
+    balance = Integer.toString(iBalance);
+  } else {
+    iBalance -= iBet;
+    balance = Integer.toString(iBalance);
   }
 }
 
@@ -177,8 +233,4 @@ class Die {
     stroke(0);
     rect(myX, myY, 77.2, 77.2, 15);
   }
-}
-
-class Money {
-  float bal;
 }
