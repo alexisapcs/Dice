@@ -1,8 +1,5 @@
 /* 
-  using 20 dice would have the 
-  effect of up to 120
-  minimun you get is 20
-  maximum is 120
+  I am very upset because you can only gamble with values 0-9.
   
   If you get a sum of 100 or higher then you get x10
   If you get a sum of 75 to 99 then get x2
@@ -12,34 +9,22 @@
 */
 
 int sum;
-String bet = "0";
+int bet = 0;
 String typing = "0";
-String balance = "100";
+int balance = 100;
 
-int iBalance;
-int iBet;
 PFont myFont;
 
 void setup() {
   noLoop();
   size(500, 544);
   myFont = createFont("Impact", 20);
-  //AmericanTypewriter-Condensed
-  //BradleyHandITCTT-Bold
-  //Courier
-  //HiraginoSans-W1
-  //Impact
-  //MarkerFelt-Thin
-  //NanumPen
-  //Skia-Regular_Light
   textFont(myFont);
   textAlign(LEFT, CENTER);
 }
 
 void draw() {  
-  iBalance = Integer.parseInt(balance);
-  iBet = Integer.parseInt(bet);
-  if (iBet <= iBalance){
+  if (bet <= balance){
     background(200);
     for (float y = 19; y < 325; y += 96.2) {
       for (float x = 19; x < 500; x += 96.2) {
@@ -50,23 +35,23 @@ void draw() {
     fill(0);
     betCheck();
     text("Sum of Dice: " + sum, 20, 404);
-    text("Balance: " + iBalance, 300, 404);
-    text("Bet: " + iBet, 300, 426);
+    text("Balance: " + balance, 300, 404);
+    text("Bet: " + bet, 300, 426);
     if (sum >= 100) {
       textAlign(CENTER, CENTER);
-      text("You mulipled your bet by 10", width/2, 475);
+      text("You mulipled your bet by 10", width/2, 450);
       textAlign(LEFT, CENTER);
     } else if (sum >= 75) {
       textAlign(CENTER, CENTER);
-      text("You doubled your bet", width/2, 475);
+      text("You doubled your bet", width/2, 450);
       textAlign(LEFT, CENTER);
     } else if (sum < 75){
       textAlign(CENTER, CENTER);
-      text("You lost your bet", width/2, 475);
+      text("You lost your bet", width/2, 450);
       textAlign(LEFT, CENTER);
     }
     
-    } else if (iBalance != 0) {
+    } else if (balance != 0) {
       textAlign(CENTER, CENTER);
       text("Your bet is too high", width/2, 475);
       textAlign(LEFT, CENTER);
@@ -76,7 +61,7 @@ void draw() {
       text("Refresh to get more or roll without gambling.", width/2, 500);
       textAlign(LEFT, CENTER);
     }
-  bet = "0";
+  bet = 0;
 }
 
 void mousePressed() {
@@ -86,37 +71,26 @@ void mousePressed() {
 
 void keyPressed() {
   if (key == '0') {
-    typing = Character.toString(key);
-    bet += Character.toString(key);
+    bet = 0;
   } else if (key == '1') {  
-    typing = Character.toString(key);
-    bet += Character.toString(key);
+    bet = 1;
   } else if (key == '2') {  
-    typing = Character.toString(key);
-    bet += Character.toString(key);
+    bet = 2;
   } else if (key == '3') {  
-    typing = Character.toString(key);
-    bet += Character.toString(key);
+    bet = 3;
   } else if (key == '4') {  
-    typing = Character.toString(key);
-    bet += Character.toString(key);
+    bet = 4;
   } else if (key == '5') {  
-    typing = Character.toString(key);
-    bet += Character.toString(key);
+    bet = 5;
   } else if (key == '6') {  
-    typing = Character.toString(key);
-    bet += Character.toString(key);
+    bet = 6;
   } else if (key == '7') {  
-    typing = Character.toString(key);
-    bet += Character.toString(key);
+    bet = 7;
   } else if (key == '8') {  
-    typing = Character.toString(key);
-    bet += Character.toString(key);
+    bet = 8;
   } else if (key == '9') {  
-    typing = Character.toString(key);
-    bet += Character.toString(key);
+    bet = 9;
   } else if (key == '\n') {
-    iBet = Integer.parseInt(bet);
     redraw();
     sum = 0;
   }
@@ -124,14 +98,11 @@ void keyPressed() {
 
 void betCheck() {
   if (sum >= 100) {
-    iBalance += iBet * 10;
-    balance = Integer.toString(iBalance);
+    balance += bet * 10;
   } else if (sum >= 75) {
-    iBalance += iBet * 2;
-    balance = Integer.toString(iBalance);
+    balance += bet * 2;
   } else {
-    iBalance -= iBet;
-    balance = Integer.toString(iBalance);
+    balance -= bet;
   }
 }
 
